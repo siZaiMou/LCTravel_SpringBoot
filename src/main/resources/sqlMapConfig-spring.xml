@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="com.travel.domain.User" alias="user"></typeAlias>
+        <typeAlias type="com.travel.domain.Category" alias="category"></typeAlias>
+        <typeAlias type="com.travel.domain.Route" alias="route"></typeAlias>
+        <typeAlias type="com.travel.domain.RouteImg" alias="routeImg"></typeAlias>
+        <typeAlias type="com.travel.domain.Seller" alias="seller"></typeAlias>
+        <typeAlias type="com.travel.domain.Favorite" alias="favorite"></typeAlias>
+    </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="dialect" value="com.github.pagehelper.dialect.helper.MySqlDialect"/>
+        </plugin>
+    </plugins>
+
+    <mappers>
+        <mapper resource="com/travel/mapper/UserMapper.xml"></mapper>
+        <mapper resource="com/travel/mapper/CategoryMapper.xml"></mapper>
+        <mapper resource="com/travel/mapper/RouteMapper.xml"></mapper>
+        <mapper resource="com/travel/mapper/RouteImgMapper.xml"></mapper>
+        <mapper resource="com/travel/mapper/FavoriteMapper.xml"></mapper>
+        <mapper resource="com/travel/mapper/SellerMapper.xml"></mapper>
+    </mappers>
+
+</configuration>

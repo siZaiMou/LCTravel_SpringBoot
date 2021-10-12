@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.travel.mapper.FavoriteMapper">
+
+    <select id="findCountByRid" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        select count(*) from tab_favorite where rid = #{rid} order by date desc
+    </select>
+
+    <insert id="add">
+        insert into tab_favorite(rid,date,uid) values(#{rid},#{date},#{uid})
+    </insert>
+
+    <delete id="delete">
+        delete from tab_favorite where rid=#{rid} and uid=#{uid}
+    </delete>
+
+    <select id="findByRidAndUid" resultType="favorite">
+        select * from tab_favorite where rid = #{rid} and uid = #{uid}
+    </select>
+
+    <select id="finByUid" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select rid from tab_favorite where uid = #{uid}
+    </select>
+
+</mapper>
