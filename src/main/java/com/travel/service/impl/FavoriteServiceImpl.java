@@ -5,13 +5,15 @@ import com.travel.domain.Route;
 import com.travel.mapper.FavoriteMapper;
 import com.travel.mapper.RouteMapper;
 import com.travel.service.FavoriteService;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
 
-@Service("favoriteService")
+@Service //被zookeeper扫描，注册到注册中心
+@Component
 public class FavoriteServiceImpl implements FavoriteService
 {
     @Autowired

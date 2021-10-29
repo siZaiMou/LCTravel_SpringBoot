@@ -9,12 +9,14 @@ import com.travel.mapper.RouteImgMapper;
 import com.travel.mapper.RouteMapper;
 import com.travel.mapper.SellerMapper;
 import com.travel.service.RouteService;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Service("routeService")
+@Service //被zookeeper扫描，注册到注册中心
+@Component
 public class RouteServiceImpl implements RouteService
 {
     @Autowired

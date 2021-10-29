@@ -4,8 +4,9 @@ import com.travel.domain.Category;
 import com.travel.mapper.CategoryMapper;
 import com.travel.service.CategoryService;
 import com.travel.util.JedisUtil;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Tuple;
 
@@ -13,7 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-@Service("categoryService")
+@Service //被zookeeper扫描，注册到注册中心
+@Component
 public class CategoryServiceImpl implements CategoryService
 {
     @Autowired
@@ -43,5 +45,11 @@ public class CategoryServiceImpl implements CategoryService
         }
         jedis.close();
         return categoryList;
+    }
+
+    @Override
+    public String provideName()
+    {
+        return "this is a category service";
     }
 }
